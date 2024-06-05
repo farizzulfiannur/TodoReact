@@ -23,9 +23,7 @@ function App() {
   return (
     <div style={styles.container}>
       <h1 style={styles.title}> My Todo List </h1>
-      {todos.map((todo) => {
-        return <p key={todo.id}> { todo.title } </p>
-      }) }
+      <Todos todos={todos}/>
     </div>
   )
 }
