@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 import Todos from './components/Todos';
 import TodoForm from './components/TodoForm';
 import './assets/style/styles.css';
+
+export const TodoContext = createContext();
 
 function App() {
   const [todos, setTodos] = useState([
@@ -58,13 +60,16 @@ function App() {
   };
 
   return (
+    <TodoContext.Provider value={{ toggleCompleted,deleteTodo }}>
     <div className='container'>
         <div className="main-content">
             <h1>My Todo List</h1>
             <TodoForm addTodo={addTodo}/>
-            <Todos todos={todos} toggleCompleted={ toggleCompleted } deleteTodo = { deleteTodo }/>
+            {/* <Todos todos={todos} toggleCompleted={ toggleCompleted } deleteTodo = { deleteTodo }/> */}
+            <Todos todos={todos}/>
         </div>
     </div>
+    </TodoContext.Provider>
   );
 }
 
