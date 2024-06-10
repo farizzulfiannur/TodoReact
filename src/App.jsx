@@ -21,7 +21,6 @@ function App() {
       completed: false,
     },
   ]);
-  // console.log(todos);
 
   const toggleCompleted= (todoId) => {
     // console.log(todoId);
@@ -40,21 +39,29 @@ function App() {
       return 
     }
 
-    const newTodo = {
+  const newTodo = {
       id: todos.length +1,
       title: todoTitle,
       completed: false,
-    }
+  }
 
     const updateTodos = todos.concat(newTodo)
-    setTodos(updateTodos)
+    setTodos(updateTodos);
+  }
+
+  const deleteTodo= (todoId) => {
+    console.log('Todo Deleted');
+    // console.log(todoId);
+    const deleteItem = todos.filter(todo => todo.id !== todoId);
+    console.log(deleteItem);
+    setTodos(deleteItem);
   }
 
   return (
     <div style={styles.container}>
       <h1 style={styles.title}> My Todo List </h1>
       <TodoForm addTodo={addTodo}/>
-      <Todos todos={todos} toggleCompleted={ toggleCompleted }/>
+      <Todos todos={todos} toggleCompleted={ toggleCompleted } deleteTodo = { deleteTodo }/>
     </div>
   )
 }
