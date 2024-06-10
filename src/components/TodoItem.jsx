@@ -27,5 +27,4 @@ const TodoItem = ({ todo, toggleCompleted, deleteTodo }) => {
     </>
   );
 };
-
 export default TodoItem;
