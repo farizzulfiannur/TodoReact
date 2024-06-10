@@ -37,7 +37,7 @@ const styles = {
     padding: "0 20px",
   },
   checkbox: {
-    height: "18px",
+    height: "14px",
     width: "18px",
   },
   button: {
