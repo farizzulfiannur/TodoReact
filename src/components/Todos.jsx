@@ -1,23 +1,17 @@
 import React from 'react'
 import TodoItem from './TodoItem'
-
+import '../assets/style/styles.css'
 
 const Todos = ({ todos, toggleCompleted, deleteTodo }) => {
   return (
-    // <h1> This is Todos Components </h1>
-    <div style={styles.container}>
+    <>
+      <ul className="task-list">
         { todos.map((todo) => {
             return <TodoItem key={todo.id}  todo={todo} toggleCompleted={ toggleCompleted } deleteTodo = {deleteTodo} />
         })}
-    </div>
+      </ul>
+    </>
   )
-}
-
-const styles = {
-  container: {
-    width: '40%',
-    margin: '0 auto',
-  },
 }
 
 export default Todos
