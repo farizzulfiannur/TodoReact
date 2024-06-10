@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Todos from './components/Todos';
+import TodoForm from './components/TodoForm';
+
 
 function App() {
   const [todos, setTodos] = useState([
@@ -19,7 +21,7 @@ function App() {
       completed: false,
     },
   ]);
-  console.log(todos);
+  // console.log(todos);
 
   const toggleCompleted= (todoId) => {
     // console.log(todoId);
@@ -32,9 +34,26 @@ function App() {
     setTodos(updatedTodos);
   }
 
+  const addTodo = (todoTitle) => {
+    // console.log('This add Todo Function');
+    if(todoTitle == ''){
+      return 
+    }
+
+    const newTodo = {
+      id: todos.length +1,
+      title: todoTitle,
+      completed: false,
+    }
+
+    const updateTodos = todos.concat(newTodo)
+    setTodos(updateTodos)
+  }
+
   return (
     <div style={styles.container}>
       <h1 style={styles.title}> My Todo List </h1>
+      <TodoForm addTodo={addTodo}/>
       <Todos todos={todos} toggleCompleted={ toggleCompleted }/>
     </div>
   )
