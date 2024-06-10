@@ -1,6 +1,7 @@
-import { useState } from "react";
-import Todos from "./components/Todos";
-import TodoForm from "./components/TodoForm";
+import { useState } from 'react'
+import Todos from './components/Todos';
+import TodoForm from './components/TodoForm';
+import './assets/style/styles.css';
 
 function App() {
   const [todos, setTodos] = useState([
@@ -57,28 +58,12 @@ function App() {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.box_title}>
-        <h1 style={styles.title}> My Todo List </h1>
-      </div>
-      <TodoForm addTodo={addTodo} />
-      <Todos
-        todos={todos}
-        toggleCompleted={toggleCompleted}
-        deleteTodo={deleteTodo}
-      />
+    <div className='container'>
+        <div className="main-content">
+            <h1>My Todo List</h1>
+            <TodoForm addTodo={addTodo}/>
+            <Todos todos={todos} toggleCompleted={ toggleCompleted } deleteTodo = { deleteTodo }/>
+        </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    textAlign: "center",
-    padding: "12px",
-  },
-  title: {
-    fontSize: "36px",
-  },
-};
-
-export default App;

@@ -3,7 +3,10 @@ import React from "react";
 const TodoItem = ({ todo, toggleCompleted, deleteTodo }) => {
   const getTodoTitleStyle = () => {
     if (todo.completed === true) {
-      return { textDecoration: "line-through" };
+      return { 
+        textDecoration: "line-through", 
+        color:"white" 
+      };
     } else {
       return { textDecoration: "none" };
     }
@@ -15,41 +18,13 @@ const TodoItem = ({ todo, toggleCompleted, deleteTodo }) => {
   };
 
   return (
-    <div style={styles.todoItem}>
-      <input
-        type="checkbox"
-        style={styles.checkbox}
-        onChange={() => toggleCompleted(todo.id)}
-      />
-      <p style={getTodoTitleStyle()}>{todo.title}</p>
-      <button style={styles.button} onClick={() => deleteTodo(todo.id)}> X </button>
-    </div>
+    <>
+      <li className="task-item">
+        <input type="checkbox" className="task-checkbox" onChange={() => toggleCompleted(todo.id)} />
+        <span className="task-text" style={getTodoTitleStyle()}>{todo.title}</span> 
+        <button className="delete-button" onClick={() => deleteTodo(todo.id)}>🗑️</button>
+      </li>
+    </>
   );
 };
-
-const styles = {
-  todoItem: {
-    border: "2px solid #f4f4f4",
-    fontSize: "24px",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: "0 20px",
-  },
-  checkbox: {
-    height: "14px",
-    width: "18px",
-  },
-  button: {
-    backgroundColor: "#BB0000",
-    color: "#fff",
-    height: "30px",
-    width: "30px",
-    borderRadius: "100%",
-    border: "none",
-    cursor: "pointer",
-    fontSize: "16px",
-  },
-};
-
 export default TodoItem;
